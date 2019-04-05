@@ -10,9 +10,9 @@ module.exports = {
 
     addProperty: (req, res) => {
         const db = req.app.get('db')
-        const {name, address, city, state, zipcode} = req.body
+        const {name, address, city, state, zip, img, mortgage, rent} = req.body
 
-        db.add_property([name, address, city, state, zipcode])
+        db.add_property([name, address, city, state, zip, img, +mortgage, +rent])
             .then(houses => {
                 res.status(200).send(houses)
             })

@@ -15,14 +15,7 @@ massive(CONNECTION_STRING).then(db => {
 })
 
 app.use(express.json())
-// app.use(session({
-//     secret: SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {
-//         maxAge: 1000 * 60 * 60 * 24
-//     }
-// }))
+
 
 app.get('/api/houses', controller.getHouses)
 app.post('/api/houses', controller.addProperty)

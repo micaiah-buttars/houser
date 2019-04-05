@@ -44,14 +44,17 @@ class Dashboard extends Component {
             address={this.state.houses[i].address}
             city={this.state.houses[i].city}
             state={this.state.houses[i].state}
-            zipcode={this.state.houses[i].zip}
+            zip={this.state.houses[i].zip}
+            img={this.state.houses[i].img}
+            mortgage={this.state.houses[i].mortgage}
+            rent={this.state.houses[i].rent}
             deleteHouse={this.deleteHouse}/>
         })
             
 
         return (
             <div>
-                <Link to='/wizard'>
+                <Link to='/wizard/step1'>
                 <button>Add New Property</button>
                 </Link>
                 {houses}
