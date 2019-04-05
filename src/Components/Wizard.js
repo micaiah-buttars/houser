@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import axios from 'axios';
 
 class Wizard extends Component {
@@ -10,14 +10,15 @@ class Wizard extends Component {
             address: '',
             city: '',
             state: '',
-            zipcode: 0
+            zipcode: 0,
+            redirect: false
         }
     }
 
     handleChange = e => {
-        let {key, value} = e.target
+        let {id, value} = e.target
         this.setState({
-            [key]: value
+            [id]: value
         })
     }
     handleAdd = () => {
@@ -31,20 +32,24 @@ class Wizard extends Component {
         }
         axios
             .post('/api/houses', newHouse)
-            .then(res => {
-                res.status(200).redirect('/')
-            })
+            .then(this.setState({
+                redirect: true
+            }))
     }
 
 
     render(){
+        const redirect = this.state.redirect
+        if(redirect === true){
+            return <Redirect to='/'/>
+        }
         return (
             <div>
-                <input key='name' type='text' placeholder='name' onChange={this.handleChange}/>
-                <input key='address' type='text' placeholder='address' onChange={this.handleChange}/>
-                <input key='city' type='text' placeholder='city' onChange={this.handleChange}/>
-                <input key='state' type='text' placeholder='state' onChange={this.handleChange}/>
-                <input key='zipcode' type='number' placeholder='zipcode' onChange={this.handleChange}/>
+                <input id='name' type='text' placeholder='name' onChange={this.handleChange}/>
+                <input id='address' type='text' placeholder='address' onChange={this.handleChange}/>
+                <input id='city' type='text' placeholder='city' onChange={this.handleChange}/>
+                <input id='state' type='text' placeholder='state' onChange={this.handleChange}/>
+                <input id='zipcode' type='number' placeholder='zipcode' onChange={this.handleChange}/>
                 <button onClick={this.handleAdd}>Complete</button>
                 <Link to='/'>
                 <button>Cancel</button>

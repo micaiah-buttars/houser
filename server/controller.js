@@ -7,8 +7,9 @@ module.exports = {
             res.status(200).send(houses)
         })
     },
-    
+
     addProperty: (req, res) => {
+        console.log(req.body)
         const db = req.app.get('db')
         const {name, address, city, state, zipcode} = req.body
 

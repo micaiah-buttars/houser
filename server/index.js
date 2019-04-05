@@ -25,7 +25,7 @@ app.use(express.json())
 // }))
 
 app.get('/api/houses', controller.getHouses)
-app.post('/api/houses', controller.getHouses)
+app.post('/api/houses', controller.addProperty)
 
 app.listen(SERVER_PORT, () => {
     console.log(`listening on ${SERVER_PORT}`)

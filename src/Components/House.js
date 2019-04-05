@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
 
 class House extends Component {
+    constructor(){
+        super()
+        this.state ={
+            
+        }
+    }
 
     render(){
-        const {house} = this.props.house
         return (
             <div>
-                <p>{house.name}</p>
-                <p>{house.address}</p>
-                <p>{house.city}</p>
-                <p>{house.state}</p>
-                <p>{house.zip}</p>
+                <p>{this.props.name}</p>
+                <p>{this.props.address}</p>
+                <p>{this.props.city}</p>
+                <p>{this.props.state}</p>
+                <p>{this.props.zip}</p>
                 <button>Delete</button>
 
             </div>

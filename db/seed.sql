@@ -9,3 +9,18 @@ create table houses (
     mortgage decimal,
     rent decimal
 )
+
+
+insert into houses (
+    name,
+    address,
+    city,
+    state,
+    zip
+) values (
+    'Bob',
+    '123 Street',
+    'City',
+    'UT',
+    12345
+);
