@@ -9,7 +9,6 @@ module.exports = {
     },
 
     addProperty: (req, res) => {
-        console.log(req.body)
         const db = req.app.get('db')
         const {name, address, city, state, zipcode} = req.body
 
@@ -17,5 +16,15 @@ module.exports = {
             .then(houses => {
                 res.status(200).send(houses)
             })
+    },
+
+    deleteHouse: (req, res) => {
+        const db = req.app.get('db')
+        const {id} = req.params
+
+        db.delete_house(id)
+            .then(
+                res.status(200).send('House Deleted')
+            )
     }
 }

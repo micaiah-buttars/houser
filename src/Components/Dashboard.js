@@ -22,17 +22,30 @@ class Dashboard extends Component {
                 )
             
     }
+
+    deleteHouse = (index) => {
+        const id = this.state.houses[index].id
+
+        axios
+            .delete(`api/house/${id}`)
+            .then(res => {
+                this.getHouses()
+            })
+
+    }
     
 
     render(){
         const houses = this.state.houses.map((house, i) => {
             return <House
             key={i}
+            index={i}
             name={this.state.houses[i].name}
             address={this.state.houses[i].address}
             city={this.state.houses[i].city}
             state={this.state.houses[i].state}
-            zipcode={this.state.houses[i].zip}/>
+            zipcode={this.state.houses[i].zip}
+            deleteHouse={this.deleteHouse}/>
         })
             
 
